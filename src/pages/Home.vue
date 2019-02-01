@@ -5,7 +5,7 @@
 
 export default {
   mounted() {
-    fetch("http://api.levent-deniz.de/ajax/")
+    fetch("http://api.levent-deniz.de/ajax")
             .then(response => response.json())
             .then((data) => {
               console.log(data);
