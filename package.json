@@ -10,7 +10,8 @@
   "dependencies": {
     "onsenui": "^2.10.6",
     "vue": "^2.5.22",
-    "vue-onsenui": "^2.6.2"
+    "vue-onsenui": "^2.6.2",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
