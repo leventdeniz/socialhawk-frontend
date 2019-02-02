@@ -14,7 +14,6 @@
   </section>
 </template>
 <script>
-
 export default { 
   methods: {
     login(){
@@ -26,13 +25,7 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-.flex-center {
-  display: flex;
-  justify-content: center;    
-}
-
 .button-div{
   position: absolute;
   bottom: 20%;
