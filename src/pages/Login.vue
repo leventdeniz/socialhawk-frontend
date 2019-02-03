@@ -1,13 +1,10 @@
 <template id="login">
     <v-ons-page>
 
-        <v-ons-toolbar>
-            <div class="center">Login</div>
-        </v-ons-toolbar>
-
-        <div class="center">
-            <p>Login with an existing account.</p>
-        </div>
+        <section class="login-header">
+            <h3>Welcome to [APPNAME]</h3>
+            <span>worlds leading platform for influencer marketing!</span>
+        </section>
 
         <div class="login-area">
             <div class="center login-element">
@@ -18,8 +15,8 @@
                 <v-ons-input placeholder="password" type="password" modifier="underbar" id="password" float></v-ons-input>
             </div>
 
-            <div class="center login-element">
-                <v-ons-button modifier="button" @click="login">Sign In</v-ons-button>
+            <div class="center login-element login-button">
+                <v-ons-button modifier="button" @click="login">Log In</v-ons-button>
             </div>
         </div>
 
@@ -27,7 +24,7 @@
     </v-ons-page>
 </template>
 <script>
-    import VueOnsen from 'vue-onsenui';
+
 export default {
   methods:{
     login(){
@@ -59,13 +56,29 @@ export default {
 </script>
 <style scoped>
 
-.login-area {
-    margin-top: 20vh;
-}
+    .login-header {
+        width: 80%;
+        margin: 10vh auto 0;
+    }
 
-.login-element {
-    margin-top:20px;
-}
+    .login-header h3 {
+        margin-bottom: 0;
+    }
+    .login-header span {
+        font-size: 0.85em;
+    }
+
+    .login-area {
+        margin-top: 15vh;
+    }
+
+    .login-element {
+        margin-top: 30px;
+    }
+
+    .login-button {
+        margin-top: 10vh;
+    }
 
 </style>
 

@@ -35,8 +35,6 @@
                     by confirming this checkbox, you agree to our <a href="http://levent-deniz.de">terms of service</a>.
                 </div>
             </v-ons-list-item>
-            <v-ons-list-item>
-            </v-ons-list-item>
         </v-ons-list>
 
         <p style="text-align: center">
