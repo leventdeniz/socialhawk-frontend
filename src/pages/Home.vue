@@ -1,16 +1,13 @@
 <template id="home">
   <v-ons-page>
 
-    <v-ons-toolbar>
-      <div class="center">Home</div>
-    </v-ons-toolbar>
 
     <div class="title">
       <h3>Welcome to [APP NAME]!</h3>
       <p>the number one for influencer marketing worldwide!</p>
     </div>
 
-    <p style="text-align: center; margin-top: 25vh;">
+    <p style="text-align: center;">
       <v-ons-button modifier="button" @click="login">Sign In</v-ons-button>
       <v-ons-button modifier="button" @click="register">Register</v-ons-button>
     </p>
@@ -36,7 +33,9 @@ export default {
 <style scoped>
 
 .title{
-  text-align: center;
+  text-align: left;
+  padding: 25px;
+  margin-top:25vh;
 }
 
 .advertiser-note{
