@@ -34,25 +34,13 @@ export default {
         let email = document.getElementById('email');
         let password = document.getElementById('password');
 
-        let http = new XMLHttpRequest();
-        let url = 'http://api.levent-deniz.de/influencer/login';
-        let params = 'email=' + email + '&password=' + password;
-        http.open('POST', url, true);
-
-        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        http.onreadystatechange = function() {
-            if(http.readyState === 4 && http.status === 200) {
-                let jsonResponse = JSON.parse(http.responseText);
-
-                if(jsonResponse.success === true){
-                    alert("user can now login");
-                }else{
-                    VueOnsen.notification.alert('Your E-Mail address or password is wrong!');
-                }
-            }
-        };
-        http.send(params);
-
+        fetch('http://api.levent-deniz.de/influencer/login', {
+            method: 'post',
+            body: 'email=' + email + '&password=' + password,
+            headers: {'Content-type':  'application/x-www-form-urlencoded'}
+        }).then(function(response){
+            console.log(response.json());
+        })
     },
 
       back(){
