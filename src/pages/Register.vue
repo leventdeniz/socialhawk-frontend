@@ -36,9 +36,12 @@
                 </div>
             </v-ons-list-item>
             <v-ons-list-item>
-                <v-ons-button @click="register">Sign Up</v-ons-button>
             </v-ons-list-item>
         </v-ons-list>
+
+        <p style="text-align: center">
+            <v-ons-button @click="register">Sign Up</v-ons-button>
+        </p>
 
         <section>
             <div class="login-note">

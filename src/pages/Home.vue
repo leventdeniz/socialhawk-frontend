@@ -1,17 +1,25 @@
-<template>
-  <section class="flex-center">
+<template id="home">
+  <v-ons-page>
+
+    <v-ons-toolbar>
+      <div class="center">Home</div>
+    </v-ons-toolbar>
+
     <div class="title">
       <h3>Welcome to [APP NAME]!</h3>
       <p>the number one for influencer marketing worldwide!</p>
     </div>
-    <div class="button-div">
+
+    <p style="text-align: center; margin-top: 25vh;">
       <v-ons-button modifier="button" @click="login">Sign In</v-ons-button>
-      <v-ons-button modifier="button" @click="register">Sign Up</v-ons-button>
-      <div class="advertiser-note">
-        <p>you're an advertiser? visit <a href="http://levent-deniz.de/">levent-deniz.de</a> to sign up your company.</p>
-      </div>
-    </div>    
-  </section>
+      <v-ons-button modifier="button" @click="register">Register</v-ons-button>
+    </p>
+
+    <div class="advertiser-note">
+      <p>You're an advertiser? visit <a href="http://levent-deniz.de/">levent-deniz.de</a> to sign up your company.</p>
+    </div>
+
+  </v-ons-page>
 </template>
 <script>
 export default { 
@@ -26,27 +34,21 @@ export default {
 }
 </script>
 <style scoped>
-.button-div{
-  position: absolute;
-  bottom: 20%;
-  width: 80%;   
-}
 
 .title{
-  position: absolute;
-  width: 80%;
-  top: 30%;
+  text-align: center;
 }
 
 .advertiser-note{
+  text-align: center;
   position: absolute;
-  text-align: center;   
+  bottom: 0;
 }
 
 ons-button[modifier="button"]{
-  width: 50%;
+  width: 120px;
   text-align: center;
-  background: #b2811e;  
+  margin-left:5px;
 }
 </style>
 
