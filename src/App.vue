@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style>
-
+.center{
+  text-align: center;
+}
 </style>
