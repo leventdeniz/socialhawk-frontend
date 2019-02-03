@@ -1,11 +1,8 @@
 <template id="login">
     <v-ons-page>
 
-        <v-ons-toolbar>
-            <div class="center">Login</div>
-        </v-ons-toolbar>
-
-        <div class="center">
+        <div class="title">
+            <h3>Login</h3>
             <p>Login with an existing account.</p>
         </div>
 
@@ -23,6 +20,9 @@
             </div>
         </div>
 
+        <div class="back-btn">
+            <p @click="back">Back</p>
+        </div>
 
     </v-ons-page>
 </template>
@@ -53,11 +53,20 @@ export default {
         };
         http.send(params);
 
-    }
+    },
+
+      back(){
+          this.$router.push('/');
+      }
   }
 }
 </script>
 <style scoped>
+
+.title {
+    text-align:left;
+    padding: 25px;
+}
 
 .login-area {
     margin-top: 20vh;
@@ -65,6 +74,12 @@ export default {
 
 .login-element {
     margin-top:20px;
+}
+
+.back-btn{
+    text-align: center;
+    position: absolute;
+    bottom: 0;
 }
 
 </style>
