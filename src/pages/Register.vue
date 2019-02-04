@@ -52,16 +52,15 @@
         },
         methods: {
             register() {
-                //console.log(this.email + " " + this.password + " " + this.passwordconfirm + " " + this.username + " " + this.terms);
-                fetch('http://api.levent-deniz.de/influencer/register', {
-                    method: 'post',
-                    body: 'email=' + this.email + '&password=' + this.password,
-                    headers: {'Content-type':  'application/x-www-form-urlencoded'}
-                }).then(function (response) {
-                    console.log(response.json());
-                }).catch(function (response) {
-                    //console.log(response.json());
+                let body = JSON.stringify({
+                    email: this.email,
+                    password: this.password
                 });
+
+                this.axios.post('http://api.levent-deniz.de/influencer/register', body)
+                            .then(response => {
+                                console.log(response);
+                            });
             }
         }
     }
