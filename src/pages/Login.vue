@@ -44,8 +44,15 @@ export default {
 
                 this.axios.post('http://api.levent-deniz.de/influencer/login', body)
                             .then(response => {
-                                console.log(response);
+                                if(response.data.success){
+                                    localStorage.setItem('uid', JSON.stringify(response.data.content));
+                                    this.$router.push('/dashboard');
+                                }
+                                else{
+                                    alert(response.data.content);
+                                }
                             });
+                           
         },
 
       back(){
