@@ -1,5 +1,6 @@
 <template id="login">
     <v-ons-page>
+        <div class="background"></div>
 
         <section class="login-header">
             <h3>Welcome to [APPNAME]</h3>
@@ -62,6 +63,7 @@ export default {
     .login-header h3 {
         margin-bottom: 0;
     }
+
     .login-header span {
         font-size: 0.85em;
     }

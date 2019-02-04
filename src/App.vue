@@ -16,4 +16,7 @@ export default {
 .center{
   text-align: center;
 }
+.background {
+    background-color: #fff;
+}
 </style>

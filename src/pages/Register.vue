@@ -1,5 +1,6 @@
 <template id="register">
     <v-ons-page>
+        <div class="background"></div>
 
         <section class="register-header">
             <h3>Welcome to [APPNAME]!</h3>
@@ -11,12 +12,10 @@
                 <v-ons-input placeholder="email" v-model="email"></v-ons-input>
             </div>
             <div class="center register-element">
-                <v-ons-input placeholder="password" type="password" modifier="underbar"
-                             v-model="password"></v-ons-input>
+                <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password"></v-ons-input>
             </div>
             <div class="center register-element">
-                <v-ons-input placeholder="password" type="password" modifier="underbar"
-                             v-model="passwordconfirm"></v-ons-input>
+                <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="passwordconfirm"></v-ons-input>
             </div>
             <div class="center register-element">
                 <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
@@ -31,9 +30,9 @@
             </div>
         </div>
 
-        <section  class="center btn-login">
-                already have an account? <br>
-                <router-link to="/login">Log in!</router-link>
+        <section class="center btn-login">
+            already have an account? <br>
+            <router-link to="/login">Log in!</router-link>
         </section>
 
     </v-ons-page>
@@ -96,6 +95,7 @@
         max-width: 80%;
         margin: 3vh auto 0;
     }
+
     .btn-login {
         position: absolute;
         bottom: 2%;

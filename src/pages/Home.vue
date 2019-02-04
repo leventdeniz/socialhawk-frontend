@@ -1,6 +1,6 @@
 <template id="home">
-  <v-ons-page>
-
+    <v-ons-page>
+        <div class="background"></div>
 
         <div class="title">
             <h3>Welcome to [APP NAME]!</h3>
