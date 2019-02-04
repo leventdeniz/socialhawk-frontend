@@ -10,6 +10,7 @@ import VueResource from 'vue-resource';
 import Home from './pages/Home.vue';
 import Login from './pages/Login.vue';
 import Register from './pages/Register.vue';
+import InstagramAuthentification from './pages/InstagramAuthentification.vue';
 
 Vue.config.productionTip = false;
 
@@ -21,6 +22,7 @@ const routes = [
   { path: '/', component: Home}, 
   { path: '/login', component: Login},
   { path: '/register', component: Register},
+  { path: '/auth', component: InstagramAuthentification}
 ];
 
 const router = new VueRouter({
