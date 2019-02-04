@@ -29,29 +29,29 @@
 </template>
 <script>
 
-export default {
-  data:function(){
-    return {
-      email: '',
-      password: ''
-    }
-  },
-  methods:{
-    login(){       
-        fetch('http://api.levent-deniz.de/influencer/login', {
-            method: 'post',
-            body: 'email=' + this.email + '&password=' + this.password,
-            headers: {'Content-type':  'application/x-www-form-urlencoded'}
-        }).then(function(response){
-            console.log(response.json());
-        })
-    },
+    export default {
+        data: function () {
+            return {
+                email: '',
+                password: ''
+            }
+        },
+        methods: {
+            login() {
+                fetch('http://api.levent-deniz.de/influencer/login', {
+                    method: 'post',
+                    body: 'email=' + this.email + '&password=' + this.password,
+                    headers: {'Content-type': 'application/x-www-form-urlencoded'}
+                }).then(function (response) {
+                    console.log(response.json());
+                })
+            },
 
-      back(){
-          this.$router.push('/');
-      }
-  }
-}
+            back() {
+                this.$router.push('/');
+            }
+        }
+    }
 </script>
 <style scoped>
 
