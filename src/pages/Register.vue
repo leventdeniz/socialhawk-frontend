@@ -2,6 +2,10 @@
     <v-ons-page>
         <div class="background"></div>
 
+        <div @click="back" class="btn-back">
+            <i class="fa fa-2x fa-angle-left"></i>
+        </div>
+
         <section class="register-header">
             <h3>Welcome to [APPNAME]!</h3>
             <span>the number one platform for influencer marketing!</span>
@@ -61,6 +65,9 @@
                 }).catch(function (response) {
                     //console.log(response.json());
                 });
+            },
+            back(){
+                this.$router.push('/');
             }
         }
     }
