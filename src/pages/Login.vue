@@ -8,11 +8,11 @@
 
         <div class="login-area">
             <div class="center login-element">
-                <v-ons-input placeholder="email" modifier="underbar" id="email"></v-ons-input>
+                <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
             </div>
 
             <div class="center login-element">
-                <v-ons-input placeholder="password" type="password" modifier="underbar" id="password" float></v-ons-input>
+                <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password" float></v-ons-input>
             </div>
 
             <div class="center login-element login-button">
@@ -29,14 +29,17 @@
 <script>
 
 export default {
+  data:function(){
+    return {
+      email: '',
+      password: ''
+    }
+  },
   methods:{
-    login(){
-        let email = document.getElementById('email');
-        let password = document.getElementById('password');
-
+    login(){       
         fetch('http://api.levent-deniz.de/influencer/login', {
             method: 'post',
-            body: 'email=' + email + '&password=' + password,
+            body: 'email=' + this.email + '&password=' + this.password,
             headers: {'Content-type':  'application/x-www-form-urlencoded'}
         }).then(function(response){
             console.log(response.json());
