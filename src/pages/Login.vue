@@ -1,5 +1,10 @@
 <template id="login">
     <v-ons-page>
+        <div class="background"></div>
+
+        <div @click="back" class="btn-back">
+            <i class="fa fa-2x fa-angle-left"></i>
+        </div>
 
         <section class="login-header">
             <h3>Welcome to [APPNAME]</h3>
@@ -20,37 +25,33 @@
             </div>
         </div>
 
-        <div class="center back-btn">
-            <p @click="back"><i class="fa fa-arrow-left"></i>back</p>
-        </div>
-
     </v-ons-page>
 </template>
 <script>
 
-export default {
-  data:function(){
-    return {
-      email: '',
-      password: ''
-    }
-  },
-  methods:{
-    login(){       
-        fetch('http://api.levent-deniz.de/influencer/login', {
-            method: 'post',
-            body: 'email=' + this.email + '&password=' + this.password,
-            headers: {'Content-type':  'application/x-www-form-urlencoded'}
-        }).then(function(response){
-            console.log(response.json());
-        })
-    },
+    export default {
+        data: function () {
+            return {
+                email: '',
+                password: ''
+            }
+        },
+        methods: {
+            login() {
+                fetch('http://api.levent-deniz.de/influencer/login', {
+                    method: 'post',
+                    body: 'email=' + this.email + '&password=' + this.password,
+                    headers: {'Content-type': 'application/x-www-form-urlencoded'}
+                }).then(function (response) {
+                    console.log(response.json());
+                })
+            },
 
-      back(){
-          this.$router.push('/');
-      }
-  }
-}
+            back() {
+                this.$router.push('/');
+            }
+        }
+    }
 </script>
 <style scoped>
 
@@ -62,6 +63,7 @@ export default {
     .login-header h3 {
         margin-bottom: 0;
     }
+
     .login-header span {
         font-size: 0.85em;
     }
@@ -76,17 +78,6 @@ export default {
 
     .login-button {
         margin-top: 10vh;
-    }
-
-    .back-btn {
-        position: absolute;
-        bottom: 2%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .back-btn i {
-        padding-right: 5px;
     }
 
 </style>
