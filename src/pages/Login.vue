@@ -35,37 +35,37 @@
 <script>
 
 export default {
-  data:function(){
-    return {
-      email: '',
-      password: '',
-      message: '', 
-      toastVisible: false
-    }
-  },
-  methods:{
-    login(){
-        let body = JSON.stringify({
-            email: this.email,
-            password: this.password
-        });
+    data: function () {
+        return {
+            email: '',
+            password: '',
+            message: '',
+            toastVisible: false
+        }
+    },
+    methods: {
+        login() {
+            let body = JSON.stringify({
+                email: this.email,
+                password: this.password
+            });
 
-        this.axios.post('http://api.levent-deniz.de/influencer/login', body)
-            .then(response => {
-                if (response.data.success) {
-                    localStorage.setItem('uid', response.data.content);
-                    this.$router.push('/dashboard');
-                } else {
-                    this.message = response.data.content;
-                    this.toastVisible = true;
-                }
-            });                           
+            this.axios.post('http://api.levent-deniz.de/influencer/login', body)
+                .then(response => {
+                    if (response.data.success) {
+                        localStorage.setItem('uid', response.data.content);
+                        this.$router.push('/dashboard');
+                    } else {
+                        this.message = response.data.content;
+                        this.toastVisible = true;
+                    }
+                });
         },
 
-      back(){
-          this.$router.push('/');
-      }
-  }
+        back() {
+            this.$router.push('/');
+        }
+    }
 }
 </script>
 <style scoped>

@@ -55,15 +55,14 @@
                 password: '',
                 passwordConfirm: '',
                 username: '',
-                terms: false, 
+                terms: false,
                 errors: [],
                 toastVisible: false
             }
         },
         methods: {
-            register() {    
-                
-                
+            register() {
+
                 let body = JSON.stringify({
                     email: this.email,
                     password: this.password,
@@ -72,20 +71,19 @@
 
                 this.axios.post('http://api.levent-deniz.de/influencer/register', body)
                     .then(response => {
-                        if(response.data.success && response.data.content.uid){
+                        if (response.data.success && response.data.content.uid) {
                             localStorage.setItem('uid', response.data.content.uid);
                             this.$router.push('/auth');
-                        }
-                        else{
+                        } else {
                             this.message = response.data.content;
                             this.toastVisible = true;
                         }
                     });
-                
+
             },
-            back(){
+            back() {
                 this.$router.push('/');
-            }        
+            }
         }
     }
 </script>
