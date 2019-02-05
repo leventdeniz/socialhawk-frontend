@@ -58,9 +58,9 @@
                 });
 
                 this.axios.post('http://api.levent-deniz.de/influencer/register', body)
-                            .then(response => {
-                                console.log(response);
-                            });
+                    .then(response => {
+                        console.log(response);
+                    });
             }
         }
     }
