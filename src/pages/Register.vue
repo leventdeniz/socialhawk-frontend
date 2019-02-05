@@ -62,7 +62,13 @@
 
                 this.axios.post('http://api.levent-deniz.de/influencer/register', body)
                     .then(response => {
-                        console.log(response);
+                        if(response.data.success && response.data.content.uid){
+                            localStorage.setItem('uid', response.data.content.uid);
+                            this.$router.push('/auth');
+                        }
+                        else{
+                            alert(response.data.content);
+                        }
                     });
             },
             back(){

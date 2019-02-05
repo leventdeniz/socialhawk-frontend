@@ -26,7 +26,7 @@ const routes = [
   { path: '/', component: Home}, 
   { path: '/login', component: Login},
   { path: '/register', component: Register},
-  { path: '/dashboard', component: Dashboard}
+  { path: '/dashboard', component: Dashboard},
   { path: '/auth', component: InstagramAuthentification}
 ];
 
