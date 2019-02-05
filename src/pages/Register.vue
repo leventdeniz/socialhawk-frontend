@@ -55,25 +55,15 @@
         },
         methods: {
             register() {
-let customHeaders = new Headers({
-  'Content-Type': 'application/x-www-form-urlencoded'
-})
-
-                //console.log(this.email + " " + this.password + " " + this.passwordconfirm + " " + this.username + " " + this.terms);
-                fetch('http://api.levent-deniz.de/influencer/register', {
-                    method: 'post',
-                    body: 'email=' + this.email + '&password=' + this.password,
-                    customHeaders
-                })
-                .then(response => response.json())
-                .then(data => {
-                  console.log(data);
-                  if(data.success){
-                    this.$router.push('/auth');
-                  }
-                }).catch(function (response) {
-                    console.log(response);
+                let body = JSON.stringify({
+                    email: this.email,
+                    password: this.password
                 });
+
+                this.axios.post('http://api.levent-deniz.de/influencer/register', body)
+                    .then(response => {
+                        console.log(response);
+                    });
             },
             back(){
                 this.$router.push('/');

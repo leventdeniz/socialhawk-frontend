@@ -29,29 +29,37 @@
 </template>
 <script>
 
-    export default {
-        data: function () {
-            return {
-                email: '',
-                password: ''
-            }
-        },
-        methods: {
-            login() {
-                fetch('http://api.levent-deniz.de/influencer/login', {
-                    method: 'post',
-                    body: 'email=' + this.email + '&password=' + this.password,
-                    headers: {'Content-type': 'application/x-www-form-urlencoded'}
-                }).then(function (response) {
-                    console.log(response.json());
-                })
-            },
-
-            back() {
-                this.$router.push('/');
-            }
-        }
+export default {
+  data:function(){
+    return {
+      email: '',
+      password: ''
     }
+  },
+  methods:{
+    login(){
+        let body = JSON.stringify({
+            email: this.email,
+            password: this.password
+        });
+
+        this.axios.post('http://api.levent-deniz.de/influencer/login', body)
+            .then(response => {
+                if (response.data.success) {
+                    localStorage.setItem('uid', response.data.content);
+                    this.$router.push('/dashboard');
+                } else {
+                    alert(response.data.content);
+                }
+            });
+                           
+        },
+
+      back(){
+          this.$router.push('/');
+      }
+  }
+}
 </script>
 <style scoped>
 
