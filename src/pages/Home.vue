@@ -9,12 +9,12 @@
 
         <p class="center">
             <v-ons-row class="btn-row">
-                <v-ons-col style="flex-grow: 2.6;">
-                    <v-ons-button modifier="button" @click="login">Log In</v-ons-button>
+                <v-ons-col style="flex-grow: 2;">
+                    <v-ons-button modifier="button large" @click="login">Log In</v-ons-button>
                 </v-ons-col>
-                <v-ons-col vertical-align="center" width="20px">or</v-ons-col>
-                <v-ons-col style="flex-grow: 3">
-                    <v-ons-button modifier="button" @click="register">Register</v-ons-button>
+                <v-ons-col vertical-align="center">or</v-ons-col>
+                <v-ons-col style="flex-grow: 2">
+                    <v-ons-button modifier="button large" @click="register">Register</v-ons-button>
                 </v-ons-col>
             </v-ons-row>
         </p>
