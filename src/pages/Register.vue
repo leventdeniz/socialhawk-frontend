@@ -8,7 +8,7 @@
 
         <div class="register-area">
             <div class="center register-element">
-                <v-ons-input placeholder="email" v-model="email"></v-ons-input>
+                <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
             </div>
             <div class="center register-element">
                 <v-ons-input placeholder="password" type="password" modifier="underbar"
@@ -52,15 +52,24 @@
         },
         methods: {
             register() {
+let customHeaders = new Headers({
+  'Content-Type': 'application/x-www-form-urlencoded'
+})
+
                 //console.log(this.email + " " + this.password + " " + this.passwordconfirm + " " + this.username + " " + this.terms);
                 fetch('http://api.levent-deniz.de/influencer/register', {
                     method: 'post',
                     body: 'email=' + this.email + '&password=' + this.password,
-                    headers: {'Content-type':  'application/x-www-form-urlencoded'}
-                }).then(function (response) {
-                    console.log(response.json());
+                    customHeaders
+                })
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data);
+                  if(data.success){
+                    this.$router.push('/auth');
+                  }
                 }).catch(function (response) {
-                    //console.log(response.json());
+                    console.log(response);
                 });
             }
         }
