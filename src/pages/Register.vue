@@ -19,7 +19,7 @@
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password"></v-ons-input>
             </div>
             <div class="center register-element">
-                <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="passwordconfirm"></v-ons-input>
+                <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
             </div>
             <div class="center register-element">
                 <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
@@ -39,6 +39,11 @@
             <router-link to="/login">Log in!</router-link>
         </section>
 
+        <v-ons-toast :visible="toastVisible" animation="ascend">
+            {{ message }}
+            <button @click="toastVisible = false">ok</button>
+        </v-ons-toast>
+
     </v-ons-page>
 
 </template>
@@ -48,16 +53,21 @@
             return {
                 email: '',
                 password: '',
-                passwordconfirm: '',
+                passwordConfirm: '',
                 username: '',
-                terms: false
+                terms: false, 
+                errors: [],
+                toastVisible: false
             }
         },
         methods: {
-            register() {
+            register() {    
+                
+                
                 let body = JSON.stringify({
                     email: this.email,
-                    password: this.password
+                    password: this.password,
+                    username: this.username
                 });
 
                 this.axios.post('http://api.levent-deniz.de/influencer/register', body)
@@ -67,13 +77,15 @@
                             this.$router.push('/auth');
                         }
                         else{
-                            alert(response.data.content);
+                            this.message = response.data.content;
+                            this.toastVisible = true;
                         }
                     });
+                
             },
             back(){
                 this.$router.push('/');
-            }
+            }        
         }
     }
 </script>

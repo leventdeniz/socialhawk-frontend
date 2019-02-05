@@ -23,6 +23,11 @@
             <div class="center login-element login-button">
                 <v-ons-button modifier="button" @click="login">Log In</v-ons-button>
             </div>
+
+            <v-ons-toast :visible="toastVisible" animation="ascend">
+                {{ message }}
+                <button @click="toastVisible = false">ok</button>
+            </v-ons-toast>
         </div>
 
     </v-ons-page>
@@ -33,7 +38,9 @@ export default {
   data:function(){
     return {
       email: '',
-      password: ''
+      password: '',
+      message: '', 
+      toastVisible: false
     }
   },
   methods:{
@@ -49,10 +56,10 @@ export default {
                     localStorage.setItem('uid', response.data.content);
                     this.$router.push('/dashboard');
                 } else {
-                    alert(response.data.content);
+                    this.message = response.data.content;
+                    this.toastVisible = true;
                 }
-            });
-                           
+            });                           
         },
 
       back(){

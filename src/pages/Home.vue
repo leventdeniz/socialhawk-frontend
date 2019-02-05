@@ -28,6 +28,27 @@
 </template>
 <script>
     export default {
+        beforeMount(){
+            //Local storage auslesen
+            //Wenn gesetzt, dann XHR post 
+            //WEnn false: this.$router.push('/home');
+            let storage = localStorage.getItem('uid');
+            if(storage){     
+                let body = JSON.stringify({
+                   uid: storage
+                }); 
+                this.axios.post('http://api.levent-deniz.de/influencer/validate/uid', body)     
+                                .then(response => {
+                                    if(response.data.success){
+                                        this.$router.push('/dashboard');
+                                    }                                    
+                                });                                         
+            }
+            else{
+                this.$router.push('/home');
+            }
+            
+        },       
         methods: {
             login() {
                 this.$router.push('/login');
