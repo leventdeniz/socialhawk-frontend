@@ -124,6 +124,10 @@
         margin-top: 30px;
     }
 
+    .register-element ons-input {
+        width: 80%;
+    }
+
     .register-button {
         margin-top: 5vh;
     }

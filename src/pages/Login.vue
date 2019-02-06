@@ -91,6 +91,10 @@ export default {
         margin-top: 30px;
     }
 
+    .login-element ons-input {
+        width: 80%;
+    }
+
     .login-button {
         margin-top: 10vh;
     }

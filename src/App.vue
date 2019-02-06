@@ -19,7 +19,7 @@ export default {
   }
 
   .background {
-    background-color: #fff;
+    background-color: #f2f2f2;
   }
 
   .btn-back {
