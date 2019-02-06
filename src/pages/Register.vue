@@ -1,4 +1,5 @@
 <template id="register">
+
     <v-ons-page>
         <div class="background"></div>
 
@@ -12,19 +13,19 @@
         </section>
 
         <div class="register-area">
-            <div class="center register-element">
-                <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
+            <div class="center register-element" v-bind:class="[errors.email ? 'error' : '']">
+                <v-ons-input placeholder="email" modifier="underbar" v-model="email" ></v-ons-input>
             </div>
-            <div class="center register-element">
+            <div class="center register-element" v-bind:class="[errors.password ? 'error' : '']">
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password"></v-ons-input>
             </div>
-            <div class="center register-element">
+            <div class="center register-element" v-bind:class="[errors.password ? 'error' : '']">
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
             </div>
-            <div class="center register-element">
+            <div class="center register-element" v-bind:class="[errors.username ? 'error' : '']">
                 <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
             </div>
-            <div class="center register-element register-checkbox">
+            <div class="center register-element register-checkbox" v-bind:class="[errors.terms ? 'error' : '']">
                 <v-ons-checkbox v-model="terms"></v-ons-checkbox>
                 by confirming this checkbox, you agree to our <a href="http://levent-deniz.de">terms of service</a>.
             </div>
@@ -38,10 +39,8 @@
             </section>
         </div>
 
-
-
         <v-ons-toast :visible="toastVisible" animation="ascend">
-            {{ message }}
+            Please check your information.
             <button @click="toastVisible = false">ok</button>
         </v-ons-toast>
 
@@ -57,14 +56,15 @@
                 passwordConfirm: '',
                 username: '',
                 terms: false,
-                message: '',
+                errors: {email: false, password: false, username: false},
                 toastVisible: false
             }
         },
         methods: {
             register() {
 
-                let body = JSON.stringify({
+                if(this.checkForm()){
+                    let body = JSON.stringify({
                     email: this.email,
                     password: this.password,
                     username: this.username
@@ -79,11 +79,25 @@
                             this.message = response.data.content;
                             this.toastVisible = true;
                         }
-                    });
-
+                    });                
+                } 
+                else{
+                    this.toastVisible = true;
+                }
             },
             back() {
                 this.$router.push('/');
+            },
+            checkForm(){
+                if(this.email && this.password && this.passwordConfirm &&
+                   this.username && this.terms){
+                    return true;
+                }
+                this.email ? this.errors.email = false : this.errors.email = true;
+                this.password ? this.errors.password = false : this.errors.password = true;
+                this.passwordConfirm ? this.errors.password = false : this.errors.password = true;
+                this.username ? this.errors.username = false : this.errors.username = true;
+                this.terms ? this.errors.terms = false : this.errors.terms = true;
             }
         }
     }
@@ -123,6 +137,13 @@
         margin-top: 4vh;
     }
 
+    .error ons-input{
+        border: #FF0000 2px solid;
+    }
+
+    .error ons-checkbox{
+        border: #FF0000 2px solid;
+    }
 
 </style>
 
