@@ -15,17 +15,22 @@
         <div class="register-area">
             <div class="center register-element" v-bind:class="[errors.email ? 'error' : '']">
                 <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
+                <i class="fa fa-exclamation"></i>
             </div>
             <div class="center register-element" v-bind:class="[errors.password ? 'error' : '']">
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password"></v-ons-input>
+                <i class="fa fa-exclamation"></i>
             </div>
             <div class="center register-element" v-bind:class="[errors.password ? 'error' : '']">
                 <v-ons-input placeholder="password confirm" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
+                <i class="fa fa-exclamation"></i>
             </div>
             <div class="center register-element" v-bind:class="[errors.username ? 'error' : '']">
                 <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
+                <i class="fa fa-exclamation"></i>
             </div>
             <div class="center register-element register-checkbox" v-bind:class="[errors.terms ? 'error' : '']">
+                <i class="fa fa-exclamation"></i>
                 <v-ons-checkbox v-model="terms"></v-ons-checkbox>
                 by confirming this checkbox, you agree to our <a href="javascript:void(0)">terms of service</a>.
             </div>
@@ -129,6 +134,7 @@
 
     .register-element {
         margin-top: 30px;
+        position: relative;
     }
 
     .register-element ons-input {
@@ -148,12 +154,14 @@
         margin-top: 4vh;
     }
 
-    .error ons-input {
-        border: #FF0000 2px solid;
+    .fa-exclamation {
+        position: absolute;
+        margin-left: -10px;
+        color: orangered;
+        opacity: 0;
     }
-
-    .error ons-checkbox {
-        border: #FF0000 2px solid;
+    .error .fa-exclamation {
+        opacity: 1;
     }
 
 </style>

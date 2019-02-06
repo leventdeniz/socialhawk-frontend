@@ -14,10 +14,12 @@
         <div class="login-area">
             <div class="center login-element">
                 <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
+                <i class="fa fa-exclamation"></i>
             </div>
 
             <div class="center login-element">
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password" float></v-ons-input>
+                <i class="fa fa-exclamation"></i>
             </div>
 
             <div class="center login-element login-button">
@@ -99,6 +101,7 @@ export default {
 
     .login-element {
         margin-top: 30px;
+        position: relative;
     }
 
     .login-element ons-input {
@@ -107,6 +110,16 @@ export default {
 
     .login-button {
         margin-top: 10vh;
+    }
+
+    .fa-exclamation {
+        position: absolute;
+        margin-left: -10px;
+        color: orangered;
+        opacity: 0;
+    }
+    .error .fa-exclamation {
+        opacity: 1;
     }
 
 </style>
