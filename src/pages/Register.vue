@@ -19,7 +19,7 @@
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password"></v-ons-input>
             </div>
             <div class="center register-element">
-                <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
+                <v-ons-input placeholder="confirm password" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
             </div>
             <div class="center register-element">
                 <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
@@ -108,6 +108,10 @@
 
     .register-element {
         margin-top: 30px;
+    }
+
+    .register-element ons-input {
+        width: 80%;
     }
 
     .register-button {
