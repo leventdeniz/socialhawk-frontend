@@ -20,7 +20,7 @@
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password"></v-ons-input>
             </div>
             <div class="center register-element" v-bind:class="[errors.password ? 'error' : '']">
-                <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
+                <v-ons-input placeholder="password confirm" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
             </div>
             <div class="center register-element" v-bind:class="[errors.username ? 'error' : '']">
                 <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
@@ -62,13 +62,12 @@
             }
         },
         methods: {
-            register() {
-                console.log(this.email + this.password + this.passwordConfirm + this.username + this.terms);
-                if(this.checkForm()){
-                    console.log('drin');
+            register() {                
+                if(this.checkForm()){                    
                     let body = JSON.stringify({
                     email: this.email,
                     password: this.password,
+                    passwordConfirm: this.passwordConfirm,
                     username: this.username
                 });
 
@@ -93,7 +92,7 @@
             },
             checkForm(){
                 if(this.email && this.password && this.passwordConfirm &&
-                   this.username && this.terms){
+                   this.username && this.terms && this.password == this.passwordConfirm){
                     return true;
                 }
                 this.email ? this.errors.email = false : this.errors.email = true;
@@ -101,6 +100,7 @@
                 this.passwordConfirm ? this.errors.password = false : this.errors.password = true;
                 this.username ? this.errors.username = false : this.errors.username = true;
                 this.terms ? this.errors.terms = false : this.errors.terms = true;
+                this.password != this.passwordConfirm ? this.errors.password = true : this.errors.password = false;
 
                 this.errorMessage = 'Please check your information.';
 
