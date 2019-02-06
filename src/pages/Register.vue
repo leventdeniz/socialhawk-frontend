@@ -14,7 +14,7 @@
 
         <div class="register-area">
             <div class="center register-element" v-bind:class="[errors.email ? 'error' : '']">
-                <v-ons-input placeholder="email" modifier="underbar" v-model="email" ></v-ons-input>
+                <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
             </div>
             <div class="center register-element" v-bind:class="[errors.password ? 'error' : '']">
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password"></v-ons-input>
@@ -27,12 +27,13 @@
             </div>
             <div class="center register-element register-checkbox" v-bind:class="[errors.terms ? 'error' : '']">
                 <v-ons-checkbox v-model="terms"></v-ons-checkbox>
-                by confirming this checkbox, you agree to our <a href="http://levent-deniz.de">terms of service</a>.
+                by confirming this checkbox, you agree to our <a href="javascript:void(0)">terms of service</a>.
             </div>
 
             <div class="center register-element register-button">
                 <v-ons-button @click="register">Register</v-ons-button>
             </div>
+
             <section class="center btn-login">
                 already have an account? <br>
                 <router-link to="/login">Log in!</router-link>
@@ -62,49 +63,45 @@
             }
         },
         methods: {
-            register() {                
-                if(this.checkForm()){                    
+            register() {
+                if (this.checkForm()) {
                     let body = JSON.stringify({
-                    email: this.email,
-                    password: this.password,
-                    passwordConfirm: this.passwordConfirm,
-                    username: this.username
-                });
+                        email: this.email,
+                        password: this.password,
+                        passwordConfirm: this.passwordConfirm,
+                        username: this.username
+                    });
 
-                this.axios.post('http://api.levent-deniz.de/influencer/register', body)
-                    .then(response => {                    
+                this.axios.post(this.apiBaseUrl + '/influencer/register', body)
+                    .then(response => {
                         if (response.data.success && response.data.content.uid) {
                             localStorage.setItem('uid', response.data.content.uid);
                             this.$router.push('/auth');
-                        } else {   
-                            this.errorMessage = response.data.content;                            
+                        } else {
+                            this.errorMessage = response.data.content;
                             Object.keys(this.errors).forEach(index => this.errors[index] = false);
                             this.toastVisible = true;
                         }
-                    });                
-                } 
-                else{
+                    });
+                } else {
                     this.toastVisible = true;
                 }
             },
             back() {
                 this.$router.push('/');
             },
-            checkForm(){
-                if(this.email && this.password && this.passwordConfirm &&
-                   this.username && this.terms && this.password == this.passwordConfirm){
+            checkForm() {
+                if (this.email && this.password && this.passwordConfirm &&
+                    this.username && this.terms && this.password === this.passwordConfirm) {
                     return true;
                 }
-                this.email ? this.errors.email = false : this.errors.email = true;                                
-                this.username ? this.errors.username = false : this.errors.username = true;
-                this.terms ? this.errors.terms = false : this.errors.terms = true;  
 
-                if(this.password || this.passwordConfirm){
-                    this.password != this.passwordConfirm ? this.errors.password = true : this.errors.password = false;
-                }
-                else{
-                    this.errors.password = true;
-                }
+                this.errors.email = !this.email;
+                this.errors.username = !this.username;
+                this.errors.terms = !this.terms;
+                this.errors.password =
+                    !(this.password && this.passwordConfirm)
+                    || this.password !== this.passwordConfirm;
 
                 this.errorMessage = 'Please check your information.';
                 return false;
@@ -151,11 +148,11 @@
         margin-top: 4vh;
     }
 
-    .error ons-input{
+    .error ons-input {
         border: #FF0000 2px solid;
     }
 
-    .error ons-checkbox{
+    .error ons-checkbox {
         border: #FF0000 2px solid;
     }
 
