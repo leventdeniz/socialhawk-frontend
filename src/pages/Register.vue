@@ -32,12 +32,13 @@
             <div class="center register-element register-button">
                 <v-ons-button @click="register">Register</v-ons-button>
             </div>
+            <section class="center btn-login">
+                already have an account? <br>
+                <router-link to="/login">Log in!</router-link>
+            </section>
         </div>
 
-        <section class="center btn-login">
-            already have an account? <br>
-            <router-link to="/login">Log in!</router-link>
-        </section>
+
 
         <v-ons-toast :visible="toastVisible" animation="ascend">
             {{ message }}
@@ -56,7 +57,7 @@
                 passwordConfirm: '',
                 username: '',
                 terms: false,
-                errors: [],
+                message: '',
                 toastVisible: false
             }
         },
@@ -119,10 +120,7 @@
     }
 
     .btn-login {
-        position: absolute;
-        bottom: 2%;
-        left: 40%;
-        transform: translate(-35%);
+        margin-top: 4vh;
     }
 
 
