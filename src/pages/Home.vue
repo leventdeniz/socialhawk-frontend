@@ -67,6 +67,7 @@
         text-align: center;
         position: absolute;
         bottom: 0;
+        padding: 0 25px;
     }
 
     .btn-row {

@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600');
   .center {
     text-align: center;
   }
@@ -32,5 +33,8 @@ export default {
     border-radius: 50%;
     cursor: pointer;
   }
+    *:not(.fa) {
+        font-family: Raleway, sans-serif !important;
+    }
 
 </style>
