@@ -71,7 +71,7 @@
                     username: this.username
                 });
 
-                this.axios.post('http://api.levent-deniz.de/influencer/register', body)
+                this.axios.post(this.apiBaseUrl + '/influencer/register', body)
                     .then(response => {
                         console.log(response);
                         if (response.data.success && response.data.content.uid) {
