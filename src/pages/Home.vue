@@ -34,7 +34,7 @@
                 let body = JSON.stringify({
                     uid: savedUserId
                 });
-                this.axios.post('http://api.levent-deniz.de/influencer/validate/uid', body)
+                this.axios.post(this.apiBaseUrl + '/influencer/validate/uid', body)
                     .then(response => {
                         if (response.data.success) {
                             this.$router.push('/dashboard');

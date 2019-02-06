@@ -7,9 +7,13 @@
 </template>
 
 <script>
-export default {
-  
-}
+  export default {
+    data: function () {
+      return {
+        apiBaseUrl: this.apiBaseUrl
+      }
+    }
+  }
 </script>
 
 <style>
