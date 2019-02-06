@@ -12,12 +12,12 @@
         </section>
 
         <div class="login-area">
-            <div class="center login-element">
+            <div class="center login-element" v-bind:class="[errors.email ? 'error' : '']">
                 <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
                 <i class="fa fa-exclamation"></i>
             </div>
 
-            <div class="center login-element">
+            <div class="center login-element" v-bind:class="[errors.password ? 'error' : '']">
                 <v-ons-input placeholder="password" type="password" modifier="underbar" v-model="password" float></v-ons-input>
                 <i class="fa fa-exclamation"></i>
             </div>
@@ -33,7 +33,7 @@
             </section>
 
             <v-ons-toast :visible="toastVisible" animation="ascend">
-                {{ message }}
+                {{ errorMessage }}
                 <button @click="toastVisible = false">ok</button>
             </v-ons-toast>
         </div>
@@ -47,16 +47,18 @@ export default {
         return {
             email: '',
             password: '',
-            message: '',
+            errorMessage: '',
+            errors: {email: false, password: false},
             toastVisible: false
         }
     },
     methods: {
         login() {
-            let body = JSON.stringify({
-                email: this.email,
-                password: this.password
-            });
+            if(this.checkForm()) {            
+               let body = JSON.stringify({
+                   email: this.email,
+                   password: this.password
+               });
 
             this.axios.post(this.$parent.apiBaseUrl + '/influencer/login', body)
                 .then(response => {
@@ -64,14 +66,28 @@ export default {
                         localStorage.setItem('uid', response.data.content);
                         this.$router.push('/dashboard');
                     } else {
-                        this.message = response.data.content;
+                        this.errorMessage = response.data.content;
+                        this.errors.email = this.errors.password = true;                           
                         this.toastVisible = true;
                     }
                 });
+            } else {
+                this.toastVisible = true;
+            }
         },
 
         back() {
             this.$router.push('/');
+        }, 
+        checkForm(){
+            if(this.email && this.password){
+               return true; 
+            }
+
+            this.errors.email = !this.email;
+            this.errors.password = !this.password;
+            this.errorMessage = "Please check your information.";
+            return false;
         }
     }
 }
