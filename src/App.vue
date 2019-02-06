@@ -24,7 +24,7 @@ export default {
   .btn-back {
     position: absolute;
     top: 2vh;
-    left: 2vh;
+    left: 5vh;
     padding: 2px 11px 2px 9px;
     background-color: #fff;
     /*box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);*/
@@ -33,7 +33,4 @@ export default {
     cursor: pointer;
   }
 
-  .btn-back:hover, .btn-back:active, .btn-back:focus {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  }
 </style>
