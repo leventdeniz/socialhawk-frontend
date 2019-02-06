@@ -24,6 +24,12 @@
                 <v-ons-button modifier="button" @click="login">Log In</v-ons-button>
             </div>
 
+            <section class="center test-data">
+                You can use the following test email & password  combination to take a look inside our app: <br><br>
+                guest@example.com <br>
+                guestpass
+            </section>
+
             <v-ons-toast :visible="toastVisible" animation="ascend">
                 {{ message }}
                 <button @click="toastVisible = false">ok</button>
@@ -70,9 +76,13 @@ export default {
 </script>
 <style scoped>
 
-    .login-header {
+    .login-header, .test-data {
         width: 80%;
         margin: 10vh auto 0;
+    }
+
+    .test-data {
+        margin-top: 7vh;
     }
 
     .login-header h3 {
