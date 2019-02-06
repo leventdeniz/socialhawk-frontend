@@ -10,7 +10,7 @@
   export default {
     data: function () {
       return {
-        apiBaseUrl: this.apiBaseUrl
+        apiBaseUrl: 'http://api.levent-deniz.de',
       }
     }
   }

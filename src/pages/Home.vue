@@ -29,12 +29,12 @@
 <script>
     export default {
         beforeMount() {
-            let savedUserId = localStorage.getItem('uid');
+            let savedUserId = localStorage.getItem('uid');        
             if (savedUserId) {
                 let body = JSON.stringify({
                     uid: savedUserId
                 });
-                this.axios.post(this.apiBaseUrl + '/influencer/validate/uid', body)
+                this.axios.post(this.$parent.apiBaseUrl + '/influencer/validate/uid', body)
                     .then(response => {
                         if (response.data.success) {
                             this.$router.push('/dashboard');

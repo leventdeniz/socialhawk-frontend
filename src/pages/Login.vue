@@ -56,7 +56,7 @@ export default {
                 password: this.password
             });
 
-            this.axios.post(this.apiBaseUrl + '/influencer/login', body)
+            this.axios.post(this.$parent.apiBaseUrl + '/influencer/login', body)
                 .then(response => {
                     if (response.data.success) {
                         localStorage.setItem('uid', response.data.content);

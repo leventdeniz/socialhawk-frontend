@@ -72,7 +72,7 @@
                         username: this.username
                     });
 
-                this.axios.post(this.apiBaseUrl + '/influencer/register', body)
+                this.axios.post(this.$parent.apiBaseUrl + '/influencer/register', body)
                     .then(response => {
                         if (response.data.success && response.data.content.uid) {
                             localStorage.setItem('uid', response.data.content.uid);
