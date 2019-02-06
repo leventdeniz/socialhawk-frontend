@@ -71,14 +71,14 @@
                     username: this.username
                 });
 
-                this.axios.post(this.apiBaseUrl + '/influencer/register', body)
-                    .then(response => {
-                        console.log(response);
+                this.axios.post('http://api.levent-deniz.de/influencer/register', body)
+                    .then(response => {                    
                         if (response.data.success && response.data.content.uid) {
                             localStorage.setItem('uid', response.data.content.uid);
                             this.$router.push('/auth');
                         } else {   
-                            this.errorMessage = response.data.content;                         
+                            this.errorMessage = response.data.content;                            
+                            Object.keys(this.errors).forEach(index => this.errors[index] = false);
                             this.toastVisible = true;
                         }
                     });                
@@ -95,15 +95,18 @@
                    this.username && this.terms && this.password == this.passwordConfirm){
                     return true;
                 }
-                this.email ? this.errors.email = false : this.errors.email = true;
-                this.password ? this.errors.password = false : this.errors.password = true;
-                this.passwordConfirm ? this.errors.password = false : this.errors.password = true;
+                this.email ? this.errors.email = false : this.errors.email = true;                                
                 this.username ? this.errors.username = false : this.errors.username = true;
-                this.terms ? this.errors.terms = false : this.errors.terms = true;
-                this.password != this.passwordConfirm ? this.errors.password = true : this.errors.password = false;
+                this.terms ? this.errors.terms = false : this.errors.terms = true;  
+
+                if(this.password || this.passwordConfirm){
+                    this.password != this.passwordConfirm ? this.errors.password = true : this.errors.password = false;
+                }
+                else{
+                    this.errors.password = true;
+                }
 
                 this.errorMessage = 'Please check your information.';
-
                 return false;
             }
         }
