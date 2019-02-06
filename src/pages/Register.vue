@@ -40,7 +40,7 @@
         </div>
 
         <v-ons-toast :visible="toastVisible" animation="ascend">
-            Please check your information.
+            {{ errorMessage }}
             <button @click="toastVisible = false">ok</button>
         </v-ons-toast>
 
@@ -56,14 +56,16 @@
                 passwordConfirm: '',
                 username: '',
                 terms: false,
-                errors: {email: false, password: false, username: false},
+                errorMessage: '',
+                errors: {email: false, password: false, username: false, terms: false},
                 toastVisible: false
             }
         },
         methods: {
             register() {
-
+                console.log(this.email + this.password + this.passwordConfirm + this.username + this.terms);
                 if(this.checkForm()){
+                    console.log('drin');
                     let body = JSON.stringify({
                     email: this.email,
                     password: this.password,
@@ -72,11 +74,12 @@
 
                 this.axios.post('http://api.levent-deniz.de/influencer/register', body)
                     .then(response => {
+                        console.log(response);
                         if (response.data.success && response.data.content.uid) {
                             localStorage.setItem('uid', response.data.content.uid);
                             this.$router.push('/auth');
-                        } else {
-                            this.message = response.data.content;
+                        } else {   
+                            this.errorMessage = response.data.content;                         
                             this.toastVisible = true;
                         }
                     });                
@@ -98,6 +101,10 @@
                 this.passwordConfirm ? this.errors.password = false : this.errors.password = true;
                 this.username ? this.errors.username = false : this.errors.username = true;
                 this.terms ? this.errors.terms = false : this.errors.terms = true;
+
+                this.errorMessage = 'Please check your information.';
+
+                return false;
             }
         }
     }
