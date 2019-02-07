@@ -1,5 +1,5 @@
 <template id="home">
-    <v-ons-page>
+    <v-ons-page v-show="show">
         <div class="background"></div>
 
         <div class="title">
@@ -36,11 +36,12 @@
                 });
                 this.axios.post(this.$parent.apiBaseUrl + '/influencer/validate/uid', body)
                     .then(response => {
-                        if (response.data.success) {
+                        if (response.data.success) {                            
                             this.$router.push('/dashboard');
                         }
                     });
             } else {
+                this.show = true;
                 this.$router.push('/');
             }
 
@@ -51,6 +52,11 @@
             },
             register() {
                 this.$router.push('/register');
+            }
+        }, 
+        data: function(){
+            return {
+                show: false
             }
         }
     }
