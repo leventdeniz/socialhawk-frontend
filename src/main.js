@@ -8,24 +8,24 @@ import VueRouter from 'vue-router';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
-import Dasboard from './pages/Dashboard.vue';
+import Welcome from './pages/Welcome.vue';
 import Login from './pages/Login.vue';
 import Register from './pages/Register.vue';
 import Navigation from './pages/Navigation.vue';
-import InstagramAuthentification from './pages/InstagramAuthentification.vue';
+import InstagramAuthentication from './pages/InstagramAuthentication.vue';
 
 Vue.config.productionTip = false;
 
 Vue.use(VueOnsen);
 Vue.use(VueRouter);
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 const routes = [
-  { path: '/', component: Dasboard}, 
+  { path: '/', component: Welcome},
   { path: '/login', component: Login},
   { path: '/register', component: Register},
   { path: '/dashboard', component: Navigation},
-  { path: '/auth', component: InstagramAuthentification}
+  { path: '/auth', component: InstagramAuthentication}
 ];
 
 const router = new VueRouter({
