@@ -27,11 +27,9 @@
     </v-ons-page>
 </template>
 <script>
-    import App from "../App";
-
     export default {
         beforeMount() {
-            if (!App.checkUid()) {
+            if (!this.$parent.checkUid()) {
                 this.show = true;
                 this.$router.push('/');
             } else {

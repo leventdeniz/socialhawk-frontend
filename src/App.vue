@@ -11,7 +11,10 @@
     data: function () {
       return {
         apiBaseUrl: 'http://api.levent-deniz.de',
-        checkUid() {
+      }
+    },
+    methods: {
+      checkUid() {
           let savedUserId = localStorage.getItem('uid');
           let body = JSON.stringify({
             uid: savedUserId
@@ -27,7 +30,6 @@
         logout(){
           this.$router.push("/login");
         }
-      }
     }
   }
 </script>
