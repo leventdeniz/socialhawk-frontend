@@ -11,6 +11,22 @@
     data: function () {
       return {
         apiBaseUrl: 'http://api.levent-deniz.de',
+        checkUid() {
+          let savedUserId = localStorage.getItem('uid');
+          let body = JSON.stringify({
+            uid: savedUserId
+          });
+
+          return !savedUserId
+                  ? !!savedUserId
+                  : this.axios.post(this.apiBaseUrl + '/influencer/validate/uid', body)
+                          .then(response => {
+                            return response.data.success;
+                          });
+        },
+        logout(){
+          this.$router.push("/login");
+        }
       }
     }
   }

@@ -27,24 +27,16 @@
     </v-ons-page>
 </template>
 <script>
+    import App from "../App";
+
     export default {
         beforeMount() {
-            let savedUserId = localStorage.getItem('uid');        
-            if (savedUserId) {
-                let body = JSON.stringify({
-                    uid: savedUserId
-                });
-                this.axios.post(this.$parent.apiBaseUrl + '/influencer/validate/uid', body)
-                    .then(response => {
-                        if (response.data.success) {                            
-                            this.$router.push('/dashboard');
-                        }
-                    });
-            } else {
+            if (!App.checkUid()) {
                 this.show = true;
                 this.$router.push('/');
+            } else {
+                this.$router.push('/dashboard');
             }
-
         },
         methods: {
             login() {
