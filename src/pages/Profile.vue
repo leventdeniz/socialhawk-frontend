@@ -1,6 +1,6 @@
 <template>
     <v-ons-page>
-        <p>Home</p>
+         <p>Profile</p>         
     </v-ons-page>
 </template>
 <script>
