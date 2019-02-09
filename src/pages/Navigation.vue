@@ -12,13 +12,13 @@
   </v-ons-page>
 </template>
 <script>
-import Home from "./Home.vue";
+import Dashboard from "./Dashboard.vue";
 import Profile from "./Profile.vue";
 import Campaigns from "./Campaigns.vue";
 
 export default {    
   components: {
-    Home,
+    Dashboard,
     Profile,
     Campaigns
   },
@@ -35,9 +35,9 @@ export default {
         },
         {
           icon: "ion-home",
-          label: "Home",
-          page: Home,
-          key: "home",
+          label: "Dashboard",
+          page: Dashboard,
+          key: "dashboard",
           item: "fa-envelope"
         },
         {
