@@ -57,7 +57,7 @@
     border-radius: 50%;
     cursor: pointer;
   }
-    *:not(.fa) {
+    *:not(.fa):not(.fas):not(.ons-icon) {
         font-family: "Source Code Pro", sans-serif !important;
     }
 
