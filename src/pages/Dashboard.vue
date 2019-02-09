@@ -10,7 +10,7 @@
     </v-ons-page>
 </template>
 <script>
-    import News from '../components/News.vue';
+    import News from '../components/dashboard/News.vue';
 
     export default {
         components: {
