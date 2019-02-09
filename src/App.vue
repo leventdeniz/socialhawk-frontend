@@ -36,6 +36,8 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600');
+    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
+
   .center {
     text-align: center;
   }
@@ -56,7 +58,7 @@
     cursor: pointer;
   }
     *:not(.fa) {
-        font-family: Raleway, sans-serif !important;
+        font-family: "Source Code Pro", sans-serif !important;
     }
 
 </style>
