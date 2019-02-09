@@ -4,7 +4,7 @@
       <div class="center">{{ title }}</div>
       <div class="right">
         <v-ons-toolbar-button>
-          <v-ons-icon :icon="this.tabs[this.activeIndex].item"></v-ons-icon>
+          <v-ons-icon :icon="icon"></v-ons-icon>
         </v-ons-toolbar-button>
       </div>
     </v-ons-toolbar>
@@ -28,21 +28,20 @@ export default {
       tabs: [
         {
           icon: "ion-person",
-          label: "Profile",
+          title: "Profile",
           page: Profile,
-          key: "profile",
-          item: ''
+          key: "profile"
         },
         {
           icon: "ion-home",
-          label: "Dashboard",
+          title: "Dashboard",
           page: Dashboard,
           key: "dashboard",
           item: "fa-envelope"
         },
         {
           icon: "ion-filing",
-          label: "Campaigns",
+          title: "Campaigns",
           page: Campaigns,
           key: "campaigns",
         }
@@ -51,12 +50,18 @@ export default {
   },
   computed: {
     title() {
-      return this.tabs[this.activeIndex].label;
+      return this.tabs[this.activeIndex].title;
+    },
+    icon(){
+        return this.tabs[this.activeIndex].item;
     }
   }, 
 };
 </script>
 <style scoped>
+    .center {
+        text-align: initial;
+    }
  .fa-envelope{
      color: grey;
 
