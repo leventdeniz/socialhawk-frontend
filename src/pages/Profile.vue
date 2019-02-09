@@ -5,9 +5,7 @@
 </template>
 <script>
     export default {
-        beforeMount() {
-            if (!this.$parent.checkUid) this.$parent.logout;
-        }
+        
     }
 </script>
 <style scoped>
