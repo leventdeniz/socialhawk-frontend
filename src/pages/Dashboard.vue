@@ -21,7 +21,7 @@
                 news: [
                     {
                         id: 0,
-                        title: "New Campaign [@adidas].",
+                        title: "New Campaign @adidas.",
                         content: "Hey guys! this is our brand new show! you wanna check this out and get one pair for free?" +
                             " ... apply to our campaign!",
                         company: "@adidas",
@@ -30,7 +30,7 @@
                     },
                     {
                         id: 1,
-                        title: "New Campaign [@colgate].",
+                        title: "New Campaign @colgate.",
                         content: "Ever wanted the whitest teeth in your clique? ... yea we know, not always easy but " +
                             "with our new toothpaste you will smile like never before! apply here for our brand new " +
                             "campaign! We're happy to see you smiling!",
