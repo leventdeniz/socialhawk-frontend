@@ -8,7 +8,7 @@
         </v-ons-toolbar-button>
       </div>
     </v-ons-toolbar>
-    <v-ons-tabbar swipeable position="auto" :tabs="tabs" :visible="true" :index.sync="activeIndex"></v-ons-tabbar>
+    <v-ons-tabbar swipeable position="bottom" :tabs="tabs" :visible="true" :index.sync="activeIndex"></v-ons-tabbar>
   </v-ons-page>
 </template>
 <script>
