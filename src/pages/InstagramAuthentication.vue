@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link to="/dashboard">dashboard</router-link>
+        <router-link to="/app">dashboard</router-link>
     </div>
 </template>
 <script>

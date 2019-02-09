@@ -33,7 +33,7 @@
                 this.show = true;
                 this.$router.push('/');
             } else {
-                this.$router.push('/dashboard');
+                this.$router.push('/app');
             }
         },
         methods: {
