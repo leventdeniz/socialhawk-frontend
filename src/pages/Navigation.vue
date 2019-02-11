@@ -1,15 +1,14 @@
 <template>
     <v-ons-page>
-        <v-ons-toolbar>
+        <v-ons-toolbar>         
             <div class="center">{{ title }}</div>
-            <div class="right">
+            <div class="right" v-show="activeIndex != 2">
                 <v-ons-toolbar-button>
                     <v-ons-icon :icon="icon"></v-ons-icon>
                 </v-ons-toolbar-button>
             </div>
         </v-ons-toolbar>
-        <v-ons-tabbar
-                swipeable
+        <v-ons-tabbar                
                 position="bottom"
                 :tabs="tabs"
                 :visible="true"
@@ -20,13 +19,13 @@
 <script>
     import Dashboard from "./Dashboard.vue";
     import Profile from "./Profile.vue";
-    import Campaigns from "./Campaigns.vue";
+    import Management from "./Management.vue";
 
     export default {
         components: {
             Dashboard,
             Profile,
-            Campaigns
+            Management
         },
         data: function () {
             return {
@@ -47,9 +46,9 @@
                     },
                     {
                         icon: "ion-filing",
-                        title: "Campaigns",
-                        page: Campaigns,
-                        key: "campaigns",
+                        title: "Management",
+                        page: Management,
+                        key: "management"
                     }
                 ]
             };
@@ -71,7 +70,15 @@
 
     .fa-envelope {
         color: grey;
+    }
 
+    .search{
+        width: 100%;
+    }
+
+    .search search-input{
+        width: 100%;
+        height: 100%;
     }
 </style>
 
