@@ -26,6 +26,11 @@ export default {
                 activeIndex: 1,
                 tabs_2: [
                     {
+                        label: 'Brands',
+                        key: "brands",
+                        page: Brands 
+                    },     
+                    {
                         label: 'Campaigns',
                         key: "campaigns",
                         page: Campaigns  
@@ -34,12 +39,7 @@ export default {
                         label: 'My Campaigns',
                         key: "mycampaigns",
                         page: MyCampaigns 
-                    },
-                    {
-                        label: 'Brands',
-                        key: "brands",
-                        page: Brands 
-                    }                         
+                    }                                        
                 ]
             };
         },

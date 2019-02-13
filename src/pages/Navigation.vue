@@ -39,7 +39,7 @@
                     },
                     {
                         icon: "ion-home",
-                        title: "Dashboard",
+                        title: "SocialHawk",
                         page: Dashboard,
                         key: "dashboard",
                         item: "fa-envelope"
