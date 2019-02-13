@@ -29,13 +29,13 @@
 <script>
     export default {
         beforeMount() {
-            if (!this.$parent.checkUid()) {
+            if (!this.$store.getters.checkUid) {
                 this.show = true;
                 this.$router.push('/');
             } else {
                 this.$router.push('/app');
             }
-        },
+        },  
         methods: {
             login() {
                 this.$router.push('/login');

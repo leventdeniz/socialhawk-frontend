@@ -27,6 +27,11 @@
             Profile,
             Management
         },
+        beforeMount(){
+           if(!this.$store.getters.checkUid){
+               this.$router.push("/login");
+           }
+        },
         data: function () {
             return {
                 activeIndex: 1,

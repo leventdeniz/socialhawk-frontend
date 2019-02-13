@@ -8,7 +8,8 @@
                       :image="campaign.image"
                       :company="campaign.company"
                     ></campaign>
-        </campaign-list>
+        </campaign-list>   
+        <v-ons-button @click="click">Me</v-ons-button>     
     </v-ons-page>
 </template>
 <script>
@@ -32,7 +33,20 @@ export default {
                 },
             ]
         }
-    }
+    },
+    methods: {
+        click(){
+            let savedUserId = localStorage.getItem('uid');
+            let body = JSON.stringify({
+              uid: savedUserId
+            });
+
+            this.axios.post(this.$store.state.apiBaseUrl + '/influencer/campaign/recommendation', body)
+                .then(response => {
+                   console.log(response);
+                });
+        }
+    } 
 }
 </script>
 <style>
