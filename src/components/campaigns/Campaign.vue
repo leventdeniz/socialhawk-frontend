@@ -3,11 +3,11 @@
         <div class="image">
             <card-img alt="news" :style="{backgroundImage: cardBackgroundImgUrl}"></card-img>
             <div class="meta">
-                <a>{{ company }}</a>
-                <span class="reward">500€</span>
-                <span class="hashtag">#fashion</span>
-                <span class="hashtag">#shoes</span>
-                <span class="hashtag">#adidas</span>
+                <a>@{{ company.toLowerCase() }}</a>
+                <span class="reward">{{ reward }}</span>
+                <span class="hashtag" v-for="hashtag in hashtags" v-bind:key="hashtag">
+                    #{{ hashtag }}
+                </span>
             </div>
         </div>
 
@@ -24,13 +24,16 @@
 </template>
 <script>
 export default {
-    props: ['title', 'content', 'image', 'company'],
+    props: ['title', 'content', 'image', 'company', 'reward', 'hashtags'],
     computed: {
         cardBackgroundImgUrl(){
             return 'url("' + this.image + '")';
         }, 
         contentSize(){
-            return this.content.substring(0, 80);
+            if(this.content){
+                return this.content.substring(0, 80);
+            }
+            
         }
     }
 }
@@ -74,7 +77,6 @@ export default {
     }
 
     .card .meta {
-        display: none;
         padding: 4px 16px 0;
         font-size: 12px;
     }

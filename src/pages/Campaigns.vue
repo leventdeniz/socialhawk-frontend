@@ -7,9 +7,10 @@
                       :content="campaign.content"
                       :image="campaign.image"
                       :company="campaign.company"
+                      :reward="campaign.reward"
+                      :hashtags="campaign.hashtags"
                     ></campaign>
         </campaign-list>   
-        <v-ons-button @click="click">Me</v-ons-button>     
     </v-ons-page>
 </template>
 <script>
@@ -19,34 +20,35 @@ export default {
     components:{
         Campaign
     },
-    data: function(){
-        return {
-            campaigns: [
-                 {
-                    id: 0,
-                    title: "New Campaign @adidas",
-                    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!" +
-                        " Maiores et perferendis eaque, exercitationem praesentium nihil.",
-                    company: "@adidas",
-                    image: "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/962a32add53a" +
-                        "4bbd8347a91200fd8d4d_9366/POD-S3_1_Schuh_schwarz_B37366_01_standard.jpg"
-                },
-            ]
-        }
-    },
-    methods: {
-        click(){
-            let savedUserId = localStorage.getItem('uid');
+    beforeMount() {
+        let savedUserId = localStorage.getItem('uid');
             let body = JSON.stringify({
               uid: savedUserId
             });
 
             this.axios.post(this.$store.state.apiBaseUrl + '/influencer/campaign/recommendation', body)
                 .then(response => {
-                   console.log(response);
+                   if(response.data.success){
+                       console.log(response.data.content);
+                       response.data.content.forEach(element => {
+                           this.campaigns.push({
+                               id: element.campaign_id,
+                               title: element.campaign_title,
+                               content: element.campaign_desc,
+                               company: element.company,
+                               reward: element.reward,
+                               image: element.campaign_thumbnail,
+                               hashtags: element.campaign_hashtags
+                           });
+                       });
+                    }
                 });
+    },
+    data: function(){
+        return {
+            campaigns: []
         }
-    } 
+    }
 }
 </script>
 <style>
