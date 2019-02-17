@@ -63,8 +63,8 @@ export default {
             this.axios.post(this.$store.state.apiBaseUrl + '/influencer/login', body)
                 .then(response => {
                     if (response.data.success) {
-                        localStorage.setItem('uid', response.data.content);
                         this.$router.push('/app');
+                        localStorage.setItem('uid', response.data.content);
                     } else {
                         this.errorMessage = response.data.content;
                         this.errors.email = this.errors.password = true;                           

@@ -26,21 +26,32 @@ export default {
               uid: savedUserId
             });
 
-            this.axios.post(this.$store.state.apiBaseUrl + '/influencer/campaign/recommendation', body)
+            this.axios.post(this.$store.state.apiBaseUrl + '/influencer/campaign/all', body)
                 .then(response => {
-                   if(response.data.success){
-                       console.log(response.data.content);
-                       response.data.content.forEach(element => {
+                   if(response.data.success){  
+                       for(var item in response.data.content){
+                           var element = response.data.content[item];                           
                            this.campaigns.push({
-                               id: element.campaign_id,
-                               title: element.campaign_title,
-                               content: element.campaign_desc,
-                               company: element.company,
-                               reward: element.reward,
-                               image: element.campaign_thumbnail,
-                               hashtags: element.campaign_hashtags
+                               id: element.campaign_hash,
+                               title: element.title,
+                               content: element.description,
+                               company: element.company_name,
+                               reward: element.rewards,
+                               image: element.thumbnail,
+                               hashtags: element.hashtags.split(',')
                            });
-                       });
+                       }         
+                    //    response.data.content.forEach(element => {
+                    //        this.campaigns.push({
+                    //            id: element.campaign_hash,
+                    //            title: element.title,
+                    //            content: element.description,
+                    //            company: element.company_name,
+                    //            reward: element.rewards,
+                    //            image: element.thumbnail,
+                    //            hashtags: element.hashtags
+                    //        });
+                    //   });
                     }
                 });
     },
