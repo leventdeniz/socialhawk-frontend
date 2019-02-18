@@ -41,17 +41,6 @@ export default {
                                hashtags: element.hashtags.split(',')
                            });
                        }         
-                    //    response.data.content.forEach(element => {
-                    //        this.campaigns.push({
-                    //            id: element.campaign_hash,
-                    //            title: element.title,
-                    //            content: element.description,
-                    //            company: element.company_name,
-                    //            reward: element.rewards,
-                    //            image: element.thumbnail,
-                    //            hashtags: element.hashtags
-                    //        });
-                    //   });
                     }
                 });
     },

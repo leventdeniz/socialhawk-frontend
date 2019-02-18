@@ -12,7 +12,8 @@
                 position="bottom"
                 :tabs="tabs"
                 :visible="true"
-                :index.sync="activeIndex">
+                :index.sync="activeIndex"
+                v-on:postchange="validate">
         </v-ons-tabbar>
     </v-ons-page>
 </template>
@@ -28,9 +29,11 @@
             Management
         },
         beforeMount(){
-           if(!this.$store.getters.checkUid){
-               this.$router.push("/login");
-           }
+           this.$store.dispatch('checkUid').then(() => {
+                if(!this.$store.getters.getUidStatus){
+                    this.$router.push('/login');
+                }
+            });
         },
         data: function () {
             return {
@@ -66,6 +69,15 @@
                 return this.tabs[this.activeIndex].item;
             }
         },
+        methods:{
+            validate(){
+                this.$store.dispatch('checkUid').then(() => {
+                    if(!this.$store.getters.getUidStatus){
+                        this.$router.push('/login');
+                    }  
+                });
+            }
+        }
     };
 </script>
 <style scoped>
