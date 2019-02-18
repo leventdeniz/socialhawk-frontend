@@ -60,11 +60,11 @@ export default {
                    password: this.password
                });
 
-            this.axios.post(this.$parent.apiBaseUrl + '/influencer/login', body)
+            this.axios.post(this.$store.state.apiBaseUrl + '/influencer/login', body)
                 .then(response => {
                     if (response.data.success) {
+                        this.$router.push('/app');
                         localStorage.setItem('uid', response.data.content);
-                        this.$router.push('/dashboard');
                     } else {
                         this.errorMessage = response.data.content;
                         this.errors.email = this.errors.password = true;                           

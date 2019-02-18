@@ -20,7 +20,7 @@
         </p>
 
         <div class="advertiser-note">
-            <p>You're an advertiser? visit <a href="http://levent-deniz.de/">levent-deniz.de</a> to sign up your
+            <p>You're an advertiser? visit <a href="http://socialhawk.io/">socialhawk.io</a> to sign up your
                 company.</p>
         </div>
 
@@ -29,13 +29,16 @@
 <script>
     export default {
         beforeMount() {
-            if (!this.$parent.checkUid()) {
-                this.show = true;
-                this.$router.push('/');
-            } else {
-                this.$router.push('/app');
-            }
-        },
+            this.$store.dispatch('checkUid').then(() => {
+                if(!this.$store.getters.getUidStatus){
+                    this.show = true;
+                    this.$router.push('/');
+                }
+                else{
+                    this.$router.push('/app');
+                }
+            });
+        },  
         methods: {
             login() {
                 this.$router.push('/login');
