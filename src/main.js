@@ -14,6 +14,8 @@ import Register from './pages/Register.vue';
 import Navigation from './pages/Navigation.vue';
 import InstagramAuthentication from './pages/InstagramAuthentication.vue';
 
+import { store } from './store.js';
+
 Vue.config.productionTip = false;
 
 Vue.use(VueOnsen);
@@ -36,4 +38,5 @@ const router = new VueRouter({
 new Vue({
   render: h => h(App),
   router,
+  store
 }).$mount('#app');
