@@ -27,9 +27,11 @@
             </div>
 
             <section class="center test-data">
-                You can use the following test email & password  combination to take a look inside our app: <br><br>
+                Use the following <br><b>test email & password</b><br> to take a look inside our app: <br><br>
+                <div class="credentials">
                 guest@example.com <br>
                 guestpass
+                </div>
             </section>
 
             <v-ons-toast :visible="toastVisible" animation="ascend">
@@ -112,7 +114,7 @@ export default {
     }
 
     .login-area {
-        margin-top: 15vh;
+        margin-top: 12vh;
     }
 
     .login-element {
@@ -134,6 +136,20 @@ export default {
         color: orangered;
         opacity: 0;
     }
+    .test-data {
+        width: 60%;
+        background: #fff;
+        padding: 5%;
+        box-shadow: 0 0 25px rgba(0,0,0,0.1);
+        border-radius: 5px;
+    }
+    .credentials {
+        border: 2px solid orangered;
+        border-radius: 5px;
+        padding: 5%;
+        font-size: 1.15em;
+    }
+
     .error .fa-exclamation {
         opacity: 1;
     }
