@@ -43,7 +43,8 @@
                         icon: "ion-person",
                         title: "Profile",
                         page: Profile,
-                        key: "profile"
+                        key: "profile",
+                        item: "fa-cog"
                     },
                     {
                         icon: "ion-home",
@@ -86,6 +87,10 @@
     }
 
     .fa-envelope {
+        color: grey;
+    }
+
+    .fa-cog{
         color: grey;
     }
 

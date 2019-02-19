@@ -3,10 +3,10 @@
         <v-ons-list>
             <v-ons-list-item>
                 <div class="left profile-img">
-                    <img src="https://instagram.fmuc3-1.fna.fbcdn.net/vp/84f65e52878773d392407275b1e1685b/5CEC9E1E/t51.2885-19/s150x150/44760102_331256484368479_1709732991984467968_n.jpg?_nc_ht=instagram.fmuc3-1.fna.fbcdn.net" alt="profile page image">
+                    <img :src="profilePictureUrl" alt="profile page image">
                 </div>
                 <div class="center">
-                    <span class="name">@jens.codes</span>
+                    <span class="name">@{{ username }}</span>
                     <span class="hashtags">#tech #developer #designer</span>
                     <span class="status-gold">Gold Status</span>
                 </div>
@@ -27,12 +27,14 @@
                     <img src="https://image.flaticon.com/icons/png/512/87/87390.png" alt="Instagram Logo">
                 </div>
                 <div class="center">
-                    <span class="follower-count">19731 Followers</span>
+                    <span class="follower-count">{{ instagramFollowerCount }} Follower</span>
                     <span class="engagement-rate">3.6% engagement rate</span>
                     <span class="comments-per-post">350 comments/Post</span>
                 </div>
+                
             </v-ons-list-item>
-            <v-ons-list-item>
+
+            <!-- <v-ons-list-item>
                 <div class="left">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO8GBImbzsK9004QvK61t_9DYUL_qgjlrxWdlseEVJ6UoU_5ivpw" alt="YouTube Logo">
                 </div>
@@ -41,7 +43,7 @@
                     <span class="upload-rate">3 uploads/week</span>
                     <span class="comments-per-video">350 comments/Video</span>
                 </div>
-            </v-ons-list-item>
+            </v-ons-list-item> -->
 
             <v-ons-list-header>About you:</v-ons-list-header>
             <v-ons-list-item>
@@ -58,7 +60,34 @@
 </template>
 <script>
     export default {
-        
+        beforeMount(){
+            let savedUserId = localStorage.getItem('uid');
+            let body = JSON.stringify({
+                uid: savedUserId
+            });
+
+            this.axios.post(this.$store.state.apiBaseUrl + '/influencer/profile', body)
+                        .then(response => {
+                            if(response.data.success){
+                                console.log(response.data.content);
+                                this.username = response.data.content.username;
+                                this.profilePictureUrl = response.data.content.ig_profile_pic_url;
+                                this.instagramUsername = response.data.content.ig_username;
+                                this.instagramFollowerCount = response.data.content.ig_follower_count;
+                            }
+                        });
+        },
+        data: function(){
+            return {
+                username: '',
+                instagramUsername: '',
+                instagramFollowerCount: '',
+                profilePictureUrl: ''
+            }
+        }, 
+        methods: {
+
+        }
     }
 </script>
 <style scoped>
