@@ -44,7 +44,7 @@
     }
 
     .card .content-wrapper {
-        padding: 0.75rem 1.5rem 1rem;
+        padding: 0.75rem 1rem 1rem;
     }
 
     .card .title {

@@ -77,7 +77,7 @@ export default {
     }
 
     .card .meta {
-        padding: 4px 16px 0;
+        padding: 4px 1rem 0;
         font-size: 12px;
     }
 
