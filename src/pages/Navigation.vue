@@ -13,7 +13,8 @@
                 :tabs="tabs"
                 :visible="true"
                 :index.sync="activeIndex"
-                v-on:postchange="validate">
+                v-on:postchange="validate"
+        >
         </v-ons-tabbar>
     </v-ons-page>
 </template>
@@ -77,6 +78,14 @@
                         this.$router.push('/login');
                     }
                 });
+                this.shadow();
+            },
+            shadow() {
+                if (this.activeIndex === 2) {
+                    document.querySelector("ons-toolbar.toolbar").style.boxShadow = "none";
+                } else {
+                    document.querySelector("ons-toolbar.toolbar").style.boxShadow = ""
+                }
             }
         }
     };

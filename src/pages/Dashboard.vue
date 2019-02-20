@@ -45,11 +45,11 @@
                     }
                 ],
                 listView: localStorage.getItem('dashboardListView') || 'expanded',
-                listIcons:{'expanded': 'md-view-day', 'contracted': 'md-view-list'}
+                listIcons: {'expanded': 'md-view-day', 'contracted': 'md-view-list'}
             }
         },
-        methods:{
-            changeListView(){
+        methods: {
+            changeListView() {
                 this.listView = this.listView === 'expanded' ? 'contracted' : 'expanded';
                 localStorage.setItem('dashboardListView', this.listView)
             }
@@ -60,6 +60,7 @@
     .right {
         text-align: right;
     }
+
     .list-icon {
         padding: 0.75rem 1.75rem 0;
         font-size: 1.8rem;

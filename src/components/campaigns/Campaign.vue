@@ -23,31 +23,31 @@
     </v-card>
 </template>
 <script>
-export default {
-    props: ['title', 'content', 'image', 'company', 'reward', 'hashtags'],
-    computed: {
-        cardBackgroundImgUrl(){
-            return 'url("' + this.image + '")';
-        }, 
-        contentSize(){
-            if(this.content){
-                return this.content.substring(0, 80);
+    export default {
+        props: ['title', 'content', 'image', 'company', 'reward', 'hashtags'],
+        computed: {
+            cardBackgroundImgUrl() {
+                return 'url("' + this.image + '")';
+            },
+            contentSize() {
+                if (this.content) {
+                    return this.content.substring(0, 80);
+                }
+
             }
-            
         }
     }
-}
 </script>
 <style scoped>
-      .card {
+    .card {
         padding: 0;
         margin: 1.75rem;
-        box-shadow: 0 10px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
         border-radius: 5px;
     }
 
     .card .content-wrapper {
-        padding: 0.75rem 1.5rem 1rem;
+        padding: 0.75rem 1rem 1rem;
     }
 
     .card .title {
@@ -55,6 +55,7 @@ export default {
         font-size: 18px;
         font-weight: 700;
     }
+
     .card .content {
         color: #606f7b;
         font-size: 16px;
