@@ -27,11 +27,11 @@
                     <img src="https://image.flaticon.com/icons/png/512/87/87390.png" alt="Instagram Logo">
                 </div>
                 <div class="center">
+                    <span class="instagram-username">@{{ instagramUsername }}</span>
                     <span class="follower-count">{{ instagramFollowerCount }} Follower</span>
                     <span class="engagement-rate">3.6% engagement rate</span>
                     <span class="comments-per-post">350 comments/Post</span>
                 </div>
-                
             </v-ons-list-item>
 
             <!-- <v-ons-list-item>
@@ -106,6 +106,14 @@
     }
     .description {
         text-align: left;
+    }
+    .list-item > .center > * {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .instagram-username {
+        display: block;
     }
 </style>
 
