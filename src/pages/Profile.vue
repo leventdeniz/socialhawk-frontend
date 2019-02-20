@@ -56,6 +56,8 @@
                 </span>
             </v-ons-list-item>
         </v-ons-list>
+
+        <span @click="logout">Logout</span><br><br>
     </v-ons-page>
 </template>
 <script>
@@ -86,7 +88,10 @@
             }
         }, 
         methods: {
-
+            logout(){
+                localStorage.clear();
+                this.$router.push('/login');
+            }
         }
     }
 </script>

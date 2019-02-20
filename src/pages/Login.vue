@@ -7,7 +7,7 @@
         </div>
 
         <section class="login-header">
-            <h3>Welcome to [APPNAME]</h3>
+            <h3>Welcome to SocialHawk</h3>
             <span>worlds leading platform for influencer marketing!</span>
         </section>
 

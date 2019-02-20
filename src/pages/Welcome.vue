@@ -3,7 +3,7 @@
         <div class="background"></div>
 
         <div class="title">
-            <h3>Welcome to [APP NAME]!</h3>
+            <h3>Welcome to SocialHawk</h3>
             <p>the number one for influencer marketing worldwide!</p>
         </div>
 
