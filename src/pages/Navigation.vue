@@ -1,6 +1,6 @@
 <template>
     <v-ons-page>
-        <v-ons-toolbar>         
+        <v-ons-toolbar>
             <div class="center">{{ title }}</div>
             <div class="right" v-show="activeIndex != 2">
                 <v-ons-toolbar-button>
@@ -8,7 +8,7 @@
                 </v-ons-toolbar-button>
             </div>
         </v-ons-toolbar>
-        <v-ons-tabbar                
+        <v-ons-tabbar
                 position="bottom"
                 :tabs="tabs"
                 :visible="true"
@@ -70,12 +70,12 @@
                 return this.tabs[this.activeIndex].item;
             }
         },
-        methods:{
-            validate(){
+        methods: {
+            validate() {
                 this.$store.dispatch('checkUid').then(() => {
-                    if(!this.$store.getters.getUidStatus){
+                    if (!this.$store.getters.getUidStatus) {
                         this.$router.push('/login');
-                    }  
+                    }
                 });
             }
         }
@@ -90,15 +90,15 @@
         color: grey;
     }
 
-    .fa-cog{
+    .fa-cog {
         color: grey;
     }
 
-    .search{
+    .search {
         width: 100%;
     }
 
-    .search search-input{
+    .search search-input {
         width: 100%;
         height: 100%;
     }

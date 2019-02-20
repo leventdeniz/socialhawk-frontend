@@ -13,6 +13,10 @@
         </section>
 
         <div class="register-area">
+            <div class="center register-element" v-bind:class="[errors.username ? 'error' : '']">
+                <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
+                <i class="fa fa-exclamation"></i>
+            </div>
             <div class="center register-element" v-bind:class="[errors.email ? 'error' : '']">
                 <v-ons-input placeholder="email" modifier="underbar" v-model="email"></v-ons-input>
                 <i class="fa fa-exclamation"></i>
@@ -23,10 +27,6 @@
             </div>
             <div class="center register-element" v-bind:class="[errors.password ? 'error' : '']">
                 <v-ons-input placeholder="password confirm" type="password" modifier="underbar" v-model="passwordConfirm"></v-ons-input>
-                <i class="fa fa-exclamation"></i>
-            </div>
-            <div class="center register-element" v-bind:class="[errors.username ? 'error' : '']">
-                <v-ons-input placeholder="username" modifier="underbar" v-model="username"></v-ons-input>
                 <i class="fa fa-exclamation"></i>
             </div>
             <div class="center register-element register-checkbox" v-bind:class="[errors.terms ? 'error' : '']">
@@ -77,17 +77,17 @@
                         username: this.username
                     });
 
-                this.axios.post(this.$store.state.apiBaseUrl + '/influencer/register', body)
-                    .then(response => {
-                        if (response.data.success && response.data.content.uid) {
-                            localStorage.setItem('uid', response.data.content.uid);
-                            this.$router.push('/auth');
-                        } else {
-                            this.errorMessage = response.data.content;
-                            Object.keys(this.errors).forEach(index => this.errors[index] = false);
-                            this.toastVisible = true;
-                        }
-                    });
+                    this.axios.post(this.$store.state.apiBaseUrl + '/influencer/register', body)
+                        .then(response => {
+                            if (response.data.success && response.data.content.uid) {
+                                localStorage.setItem('uid', response.data.content.uid);
+                                this.$router.push('/auth');
+                            } else {
+                                this.errorMessage = response.data.content;
+                                Object.keys(this.errors).forEach(index => this.errors[index] = false);
+                                this.toastVisible = true;
+                            }
+                        });
                 } else {
                     this.toastVisible = true;
                 }
@@ -160,6 +160,7 @@
         color: orangered;
         opacity: 0;
     }
+
     .error .fa-exclamation {
         opacity: 1;
     }

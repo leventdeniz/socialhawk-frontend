@@ -9,7 +9,7 @@ Vue.use(Vuex);
 export let store = new Vuex.Store({
   state: {
     apiBaseUrl: 'http://api.socialhawk.io',
-    status: false
+    uidStatus: false
   }, 
   actions: {
     checkUid({ commit, state }){
@@ -27,12 +27,12 @@ export let store = new Vuex.Store({
   }, 
   mutations: {
     setUidStatus(state, status){
-      state.status = status;
+      state.uidStatus = status;
     }
   }, 
   getters: {
     getUidStatus(state){
-      return state.status;
+      return state.uidStatus;
     }
   }
 });

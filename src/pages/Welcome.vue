@@ -30,15 +30,14 @@
     export default {
         beforeMount() {
             this.$store.dispatch('checkUid').then(() => {
-                if(!this.$store.getters.getUidStatus){
+                if (!this.$store.getters.getUidStatus) {
                     this.show = true;
                     this.$router.push('/');
-                }
-                else{
+                } else {
                     this.$router.push('/app');
                 }
             });
-        },  
+        },
         methods: {
             login() {
                 this.$router.push('/login');
@@ -46,8 +45,8 @@
             register() {
                 this.$router.push('/register');
             }
-        }, 
-        data: function(){
+        },
+        data: function () {
             return {
                 show: false
             }

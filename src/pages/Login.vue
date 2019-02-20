@@ -29,8 +29,8 @@
             <section class="center test-data">
                 Use the following <br><b>test email & password</b><br> to take a look inside our app: <br><br>
                 <div class="credentials">
-                guest@example.com <br>
-                guestpass
+                    guest@example.com <br>
+                    guestpass
                 </div>
             </section>
 
@@ -44,55 +44,55 @@
 </template>
 <script>
 
-export default {
-    data: function () {
-        return {
-            email: '',
-            password: '',
-            errorMessage: '',
-            errors: {email: false, password: false},
-            toastVisible: false
-        }
-    },
-    methods: {
-        login() {
-            if(this.checkForm()) {            
-               let body = JSON.stringify({
-                   email: this.email,
-                   password: this.password
-               });
-
-            this.axios.post(this.$store.state.apiBaseUrl + '/influencer/login', body)
-                .then(response => {
-                    if (response.data.success) {
-                        this.$router.push('/app');
-                        localStorage.setItem('uid', response.data.content);
-                    } else {
-                        this.errorMessage = response.data.content;
-                        this.errors.email = this.errors.password = true;                           
-                        this.toastVisible = true;
-                    }
-                });
-            } else {
-                this.toastVisible = true;
+    export default {
+        data: function () {
+            return {
+                email: '',
+                password: '',
+                errorMessage: '',
+                errors: {email: false, password: false},
+                toastVisible: false
             }
         },
+        methods: {
+            login() {
+                if (this.checkForm()) {
+                    let body = JSON.stringify({
+                        email: this.email,
+                        password: this.password
+                    });
 
-        back() {
-            this.$router.push('/');
-        }, 
-        checkForm(){
-            if(this.email && this.password){
-               return true; 
+                    this.axios.post(this.$store.state.apiBaseUrl + '/influencer/login', body)
+                        .then(response => {
+                            if (response.data.success) {
+                                this.$router.push('/app');
+                                localStorage.setItem('uid', response.data.content);
+                            } else {
+                                this.errorMessage = response.data.content;
+                                this.errors.email = this.errors.password = true;
+                                this.toastVisible = true;
+                            }
+                        });
+                } else {
+                    this.toastVisible = true;
+                }
+            },
+
+            back() {
+                this.$router.push('/');
+            },
+            checkForm() {
+                if (this.email && this.password) {
+                    return true;
+                }
+
+                this.errors.email = !this.email;
+                this.errors.password = !this.password;
+                this.errorMessage = "Please check your information.";
+                return false;
             }
-
-            this.errors.email = !this.email;
-            this.errors.password = !this.password;
-            this.errorMessage = "Please check your information.";
-            return false;
         }
     }
-}
 </script>
 <style scoped>
 
@@ -136,13 +136,15 @@ export default {
         color: orangered;
         opacity: 0;
     }
+
     .test-data {
         width: 60%;
         background: #fff;
         padding: 5%;
-        box-shadow: 0 0 25px rgba(0,0,0,0.1);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
     }
+
     .credentials {
         border: 2px solid orangered;
         border-radius: 5px;
