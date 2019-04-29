@@ -1,4 +1,9 @@
-# ip-prototype-fe
+# socialhawk frontend
+
+## What is socialhawk?
+Socialhawk is a platform where advertisers can connect with influencers. We try to manage and simplify the influencer marketing workflow.
+
+---
 
 ## Project setup
 ```
@@ -15,21 +20,7 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-## Project setup
+## Project server setup
 run following command on server:
 ```
 deployment_fe
